@@ -69,6 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 itemCount: tags.length),
           ),
+          RaisedButton(
+            child: Text('Submit'),
+            onPressed: () {},
+          )
         ],
       )),
     );
