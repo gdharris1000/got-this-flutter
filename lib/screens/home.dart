@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:got_this_flutter/classes/category.dart';
+import 'package:got_this_flutter/classes/tag.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home';
@@ -9,19 +10,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Category> categories = [
+  List<Category> categories = [
     Category(label: 'Work', status: false),
     Category(label: 'Self', status: true),
     Category(label: 'Play', status: false),
     Category(label: 'Living', status: false)
   ];
-  final List<String> tags = [
-    'Health, Wellbeing, Fitness',
-    'Creating',
-    'New Developments',
-    'Giving',
-    'Receiving',
-    'Other'
+
+  final List<Tag> tags = [
+    Tag(label: 'Health, Wellbeing, Fitness', status: false),
+    Tag(label: 'Creating', status: false),
+    Tag(label: 'New Developments', status: false),
+    Tag(label: 'Giving', status: false),
+    Tag(label: 'Receiving', status: false),
+    Tag(label: 'Other', status: false)
   ];
 
   @override
@@ -50,6 +52,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 itemCount: categories.length),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemBuilder: (context, index) {
+                  final tag = tags[index];
+                  return CheckboxListTile(
+                    title: Text(tag.label),
+                    value: tag.status,
+                    onChanged: (bool value) {
+                      setState(() {
+                        tag.status = value;
+                      });
+                    },
+                  );
+                },
+                itemCount: tags.length),
           ),
         ],
       )),
