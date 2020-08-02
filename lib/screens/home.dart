@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Category(label: 'Living', status: false)
   ];
 
-  final List<Tag> tags = [
+  List<Tag> tags = [
     Tag(label: 'Health, Wellbeing, Fitness', status: false),
     Tag(label: 'Creating', status: false),
     Tag(label: 'New Developments', status: false),
