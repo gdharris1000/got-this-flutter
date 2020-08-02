@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:got_this_flutter/classes/category.dart';
 import 'package:got_this_flutter/classes/tag.dart';
 import 'package:got_this_flutter/classes/achievement.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home';
