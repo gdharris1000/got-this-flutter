@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String achievementText = "";
 
-  List<Achievement> achievments = [];
+  List<Achievement> achievements = [];
 
   void addAchievement() {
     List<String> _categories = [];
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
 
-    achievments.add(Achievement(
+    achievements.add(Achievement(
         achievement: achievementText, categories: _categories, tags: _tags));
   }
 
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text('Submit'),
             onPressed: () {
               addAchievement();
-              print(achievments);
+              print(achievements);
             },
           )
         ],
