@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:got_this_flutter/classes/category.dart';
 import 'package:got_this_flutter/classes/tag.dart';
+import 'package:got_this_flutter/classes/achievement.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home';
@@ -26,6 +27,30 @@ class _HomeScreenState extends State<HomeScreen> {
     Tag(label: 'Other', status: false)
   ];
 
+  String achievementText = "";
+
+  List<Achievement> achievments = [];
+
+  void addAchievement() {
+    List<String> _categories = [];
+    List<String> _tags = [];
+
+    categories.forEach((e) {
+      if (e.status) {
+        _categories.add(e.label);
+      }
+    });
+
+    tags.forEach((e) {
+      if (e.status) {
+        _tags.add(e.label);
+      }
+    });
+
+    achievments.add(Achievement(
+        achievement: achievementText, categories: _categories, tags: _tags));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +61,11 @@ class _HomeScreenState extends State<HomeScreen> {
             keyboardType: TextInputType.multiline,
             maxLines: null,
             decoration: InputDecoration(hintText: 'Enter your achievement'),
+            onChanged: (value) {
+              setState(() {
+                achievementText = value;
+              });
+            },
           ),
           Expanded(
             child: ListView.builder(
@@ -71,7 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           RaisedButton(
             child: Text('Submit'),
-            onPressed: () {},
+            onPressed: () {
+              addAchievement();
+              print(achievments);
+            },
           )
         ],
       )),
