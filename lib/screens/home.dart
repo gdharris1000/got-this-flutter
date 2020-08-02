@@ -3,6 +3,10 @@ import 'package:got_this_flutter/classes/category.dart';
 import 'package:got_this_flutter/classes/tag.dart';
 import 'package:got_this_flutter/classes/achievement.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:got_this_flutter/controllers/user_data.dart';
+
+final _firestore = Firestore.instance;
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home';
@@ -12,6 +16,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final UserData userData = UserData();
+  String userId = "";
+  String docId = "";
   List<Category> categories = [
     Category(label: 'Work', status: false),
     Category(label: 'Self', status: true),
@@ -30,9 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   String achievementText = "";
 
-  List<Achievement> achievements = [];
+//  List<Achievement> achievements = [];
 
-  void addAchievement() {
+  void addAchievement() async {
     List<String> _categories = [];
     List<String> _tags = [];
 
@@ -48,8 +55,45 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
 
-    achievements.add(Achievement(
-        achievement: achievementText, categories: _categories, tags: _tags));
+    _firestore
+        .collection('users')
+        .document(docId)
+        .collection('achievements')
+        .document()
+        .setData({
+      'achievement': achievementText,
+      'categories': _categories,
+      'tags': _tags,
+      'created': Timestamp.now()
+    });
+
+//    achievements.add(Achievement(
+//        achievement: achievementText, categories: _categories, tags: _tags));
+  }
+
+  void getUserDocId() async {
+    final userData = await _firestore
+        .collection('users')
+        .where('uid', isEqualTo: userId)
+        .getDocuments();
+    docId = userData.documents[0].documentID;
+    print('docid: $docId');
+  }
+
+  void getCurrentUser() {
+    userData.getCurrentUser().then((FirebaseUser result) {
+      setState(() {
+        userId = result.uid;
+        getUserDocId();
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getCurrentUser();
+    super.initState();
   }
 
   @override
@@ -104,7 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text('Submit'),
             onPressed: () {
               addAchievement();
-              print(achievements);
             },
           )
         ],
