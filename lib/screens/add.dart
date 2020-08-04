@@ -98,6 +98,9 @@ class _AddScreenState extends State<AddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Add Achievement'),
+      ),
       body: SafeArea(
           child: Column(
         children: <Widget>[

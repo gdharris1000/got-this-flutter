@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:got_this_flutter/screens/stats.dart';
+import 'list.dart';
 import 'add.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:got_this_flutter/controllers/user_data.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home';
@@ -12,9 +16,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
+  final _firestore = Firestore.instance;
+  final UserData userData = UserData();
+  String userId = "";
+  String docId = "";
+
   static List<Widget> _navOptions = <Widget>[
     AddScreen(),
     StatsScreen(),
+    ListScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -35,6 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.solidChartBar),
               title: Text('Stats')),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.solidListAlt),
+              title: Text('List Achievements')),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Color.fromRGBO(174, 195, 175, 1.0),

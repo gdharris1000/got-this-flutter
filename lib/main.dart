@@ -3,6 +3,7 @@ import 'screens/login.dart';
 import 'screens/home.dart';
 import 'screens/register.dart';
 import 'screens/welcome.dart';
+import 'screens/list.dart';
 
 void main() {
   runApp(MyApp());
