@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login.dart';
 import 'screens/home.dart';
+import 'screens/register.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,10 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Flutter Demo',
-        initialRoute: LoginScreen.id,
+        initialRoute: RegisterScreen.id,
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
-          HomeScreen.id: (context) => HomeScreen()
+          HomeScreen.id: (context) => HomeScreen(),
+          RegisterScreen.id: (context) => RegisterScreen(),
         });
   }
 }
