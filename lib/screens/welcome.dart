@@ -13,6 +13,10 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text("Welcome"),
+              SizedBox(
+                height: 30.0,
+              ),
               RaisedButton(
                 onPressed: () => Navigator.pushNamed(context, LoginScreen.id),
                 child: Text('Login'),

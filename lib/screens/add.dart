@@ -103,48 +103,83 @@ class _AddScreenState extends State<AddScreen> {
       ),
       body: SafeArea(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          TextField(
-            keyboardType: TextInputType.multiline,
-            maxLines: null,
-            decoration: InputDecoration(hintText: 'Enter your achievement'),
-            onChanged: (value) {
-              setState(() {
-                achievementText = value;
-              });
-            },
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Achievement',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                TextField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 3,
+                  decoration:
+                      InputDecoration(hintText: 'Enter your achievement'),
+                  onChanged: (value) {
+                    setState(() {
+                      achievementText = value;
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
           Expanded(
-            child: ListView.builder(
-                itemBuilder: (context, index) {
-                  final category = categories[index];
-                  return CheckboxListTile(
-                    title: Text(category.label),
-                    value: category.status,
-                    onChanged: (bool value) {
-                      setState(() {
-                        category.status = value;
-                      });
-                    },
-                  );
-                },
-                itemCount: categories.length),
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Where does it sit?',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        final category = categories[index];
+                        return CheckboxListTile(
+                          title: Text(category.label),
+                          value: category.status,
+                          onChanged: (bool value) {
+                            setState(() {
+                              category.status = value;
+                            });
+                          },
+                        );
+                      },
+                      itemCount: categories.length),
+                ),
+              ],
+            ),
           ),
           Expanded(
-            child: ListView.builder(
-                itemBuilder: (context, index) {
-                  final tag = tags[index];
-                  return CheckboxListTile(
-                    title: Text(tag.label),
-                    value: tag.status,
-                    onChanged: (bool value) {
-                      setState(() {
-                        tag.status = value;
-                      });
-                    },
-                  );
-                },
-                itemCount: tags.length),
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'What does it cover?',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        final tag = tags[index];
+                        return CheckboxListTile(
+                          title: Text(tag.label),
+                          value: tag.status,
+                          onChanged: (bool value) {
+                            setState(() {
+                              tag.status = value;
+                            });
+                          },
+                        );
+                      },
+                      itemCount: tags.length),
+                ),
+              ],
+            ),
           ),
           RaisedButton(
             child: Text('Submit'),

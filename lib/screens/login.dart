@@ -18,7 +18,6 @@ class _LoginScreenState extends State<LoginScreen> with ValidationMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(174, 195, 176, 1.0),
       appBar: AppBar(title: Text('Login')),
       body: SafeArea(
         child: Padding(

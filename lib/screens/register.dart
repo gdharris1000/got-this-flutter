@@ -46,7 +46,6 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(174, 195, 176, 1.0),
         appBar: AppBar(
           title: Text('Register'),
         ),
@@ -57,10 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> with ValidationMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Flexible(
-                  child: Hero(
-                    tag: 'logo',
-                    child: Image.asset('assets/images/logo.png'),
-                  ),
+                  child: Text("Welcome"),
                   flex: 2,
                 ),
                 SizedBox(height: 30.0),
