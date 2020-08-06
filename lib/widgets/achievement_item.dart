@@ -17,7 +17,10 @@ class AchievementItem extends StatelessWidget {
 //        leading: Text(categories.toString()),
         subtitle: Text(
             "Categories: ${tags.toString()}\nTags: ${categories.toString()}"),
-        leading: FaIcon(FontAwesomeIcons.trophy),
+        leading: FaIcon(
+          FontAwesomeIcons.trophy,
+          color: Color.fromRGBO(224, 132, 9, 1.0),
+        ),
       ),
     );
   }
