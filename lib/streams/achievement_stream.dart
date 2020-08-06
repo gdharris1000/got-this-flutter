@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:got_this_flutter/classes/achievement.dart';
 import 'package:got_this_flutter/controllers/user_data.dart';
+import 'package:got_this_flutter/widgets/achievement_item.dart';
 
 final _firestore = Firestore.instance;
 
@@ -50,21 +51,26 @@ class _AchievementStreamState extends State<AchievementStream> {
           return ListView.builder(
               itemBuilder: (context, index) {
                 final achievement = achievementList[index];
-                return Container(
-                  margin: EdgeInsets.only(bottom: 10.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 1.0),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Text("Achievement: ${achievement.achievement}"),
-                      Text("Categories: ${achievement.categories.toString()}"),
-                      Text("Tags: ${achievement.tags.toString()}"),
-                      Text(
-                          "Created on: ${achievement.created.toDate().toString()}"),
-                    ],
-                  ),
+                return AchievementItem(
+                  achievement: achievement.achievement,
+                  categories: achievement.categories,
+                  tags: achievement.tags,
                 );
+//                return Container(
+//                  margin: EdgeInsets.only(bottom: 10.0),
+//                  decoration: BoxDecoration(
+//                    border: Border.all(color: Colors.black, width: 1.0),
+//                  ),
+//                  child: Column(
+//                    children: <Widget>[
+//                      Text("Achievement: ${achievement.achievement}"),
+//                      Text("Categories: ${achievement.categories.toString()}"),
+//                      Text("Tags: ${achievement.tags.toString()}"),
+//                      Text(
+//                          "Created on: ${achievement.created.toDate().toString()}"),
+//                    ],
+//                  ),
+//                );
               },
               itemCount: achievementList.length);
         }
