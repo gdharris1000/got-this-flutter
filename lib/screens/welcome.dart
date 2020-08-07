@@ -13,7 +13,14 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Welcome"),
+              Text(
+                "Welcome",
+                style: TextStyle(fontSize: 30),
+              ),
+              Text(
+                "Please log in or register",
+                style: TextStyle(fontSize: 18),
+              ),
               SizedBox(
                 height: 30.0,
               ),
