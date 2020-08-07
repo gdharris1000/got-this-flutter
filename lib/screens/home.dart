@@ -6,6 +6,7 @@ import 'add.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:got_this_flutter/controllers/user_data.dart';
+import 'package:got_this_flutter/screens/user.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home';
@@ -25,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     AddScreen(),
 //    StatsScreen(),
     ListScreen(),
+    UserScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -48,6 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.solidListAlt),
               title: Text('List Achievements')),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.solidUser),
+              title: Text('User Information')),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Color.fromRGBO(145, 241, 230, 1.0),

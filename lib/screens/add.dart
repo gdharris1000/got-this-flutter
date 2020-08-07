@@ -101,94 +101,97 @@ class _AddScreenState extends State<AddScreen> {
       appBar: AppBar(
         title: Text('Add Achievement'),
       ),
-      body: SafeArea(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Expanded(
-            flex: 1,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SafeArea(
             child: Column(
-              children: <Widget>[
-                Text(
-                  'Achievement',
-                  style: TextStyle(fontSize: 20.0),
-                ),
-                TextField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: 3,
-                  decoration:
-                      InputDecoration(hintText: 'Enter your achievement'),
-                  onChanged: (value) {
-                    setState(() {
-                      achievementText = value;
-                    });
-                  },
-                ),
-              ],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'Achievement',
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.multiline,
+                    maxLines: 3,
+                    decoration:
+                        InputDecoration(hintText: 'Enter your achievement'),
+                    onChanged: (value) {
+                      setState(() {
+                        achievementText = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Column(
-              children: <Widget>[
-                Text(
-                  'Where does it sit?',
-                  style: TextStyle(fontSize: 20.0),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                      itemBuilder: (context, index) {
-                        final category = categories[index];
-                        return CheckboxListTile(
-                          title: Text(category.label),
-                          value: category.status,
-                          onChanged: (bool value) {
-                            setState(() {
-                              category.status = value;
-                            });
-                          },
-                        );
-                      },
-                      itemCount: categories.length),
-                ),
-              ],
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'Where does it sit?',
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          final category = categories[index];
+                          return CheckboxListTile(
+                            title: Text(category.label),
+                            value: category.status,
+                            onChanged: (bool value) {
+                              setState(() {
+                                category.status = value;
+                              });
+                            },
+                          );
+                        },
+                        itemCount: categories.length),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Column(
-              children: <Widget>[
-                Text(
-                  'What does it cover?',
-                  style: TextStyle(fontSize: 20.0),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                      itemBuilder: (context, index) {
-                        final tag = tags[index];
-                        return CheckboxListTile(
-                          title: Text(tag.label),
-                          value: tag.status,
-                          onChanged: (bool value) {
-                            setState(() {
-                              tag.status = value;
-                            });
-                          },
-                        );
-                      },
-                      itemCount: tags.length),
-                ),
-              ],
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    'What does it cover?',
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          final tag = tags[index];
+                          return CheckboxListTile(
+                            title: Text(tag.label),
+                            value: tag.status,
+                            onChanged: (bool value) {
+                              setState(() {
+                                tag.status = value;
+                              });
+                            },
+                          );
+                        },
+                        itemCount: tags.length),
+                  ),
+                ],
+              ),
             ),
-          ),
-          RaisedButton(
-            child: Text('Submit'),
-            onPressed: () {
-              addAchievement();
-            },
-          )
-        ],
-      )),
+            RaisedButton(
+              child: Text('Submit'),
+              onPressed: () {
+                addAchievement();
+              },
+            )
+          ],
+        )),
+      ),
     );
   }
 }

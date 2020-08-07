@@ -19,8 +19,9 @@ class MyApp extends StatelessWidget {
             primaryColor: Color.fromRGBO(61, 27, 115, 1.0),
             accentColor: Color.fromRGBO(65, 117, 187, 1.0),
             buttonTheme: ButtonThemeData(
-                buttonColor: Color.fromRGBO(65, 117, 187, 1.0),
-                textTheme: ButtonTextTheme.primary)),
+              buttonColor: Color.fromRGBO(61, 27, 115, 1.0),
+              textTheme: ButtonTextTheme.primary,
+            )),
         initialRoute: WelcomeScreen.id,
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
