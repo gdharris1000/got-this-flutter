@@ -56,21 +56,6 @@ class _AchievementStreamState extends State<AchievementStream> {
                   categories: achievement.categories,
                   tags: achievement.tags,
                 );
-//                return Container(
-//                  margin: EdgeInsets.only(bottom: 10.0),
-//                  decoration: BoxDecoration(
-//                    border: Border.all(color: Colors.black, width: 1.0),
-//                  ),
-//                  child: Column(
-//                    children: <Widget>[
-//                      Text("Achievement: ${achievement.achievement}"),
-//                      Text("Categories: ${achievement.categories.toString()}"),
-//                      Text("Tags: ${achievement.tags.toString()}"),
-//                      Text(
-//                          "Created on: ${achievement.created.toDate().toString()}"),
-//                    ],
-//                  ),
-//                );
               },
               itemCount: achievementList.length);
         }

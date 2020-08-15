@@ -16,12 +16,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Got This',
         theme: ThemeData(
-            primaryColor: Color.fromRGBO(61, 27, 115, 1.0),
-            accentColor: Color.fromRGBO(65, 117, 187, 1.0),
-            buttonTheme: ButtonThemeData(
-              buttonColor: Color.fromRGBO(61, 27, 115, 1.0),
-              textTheme: ButtonTextTheme.primary,
-            )),
+          primaryColor: Color.fromRGBO(18, 69, 89, 1.0),
+          accentColor: Color.fromRGBO(18, 69, 89, 1.0),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Color.fromRGBO(18, 69, 89, 1.0),
+            textTheme: ButtonTextTheme.primary,
+          ),
+          toggleableActiveColor: Color.fromRGBO(18, 69, 89, 1.0),
+        ),
         initialRoute: WelcomeScreen.id,
         routes: {
           LoginScreen.id: (context) => LoginScreen(),

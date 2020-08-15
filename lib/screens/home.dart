@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   static List<Widget> _navOptions = <Widget>[
     AddScreen(),
-//    StatsScreen(),
+    StatsScreen(),
     ListScreen(),
     UserScreen(),
   ];
@@ -39,14 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(61, 27, 115, 1.0),
+        backgroundColor: Color.fromRGBO(18, 69, 89, 1.0),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.solidPlusSquare),
               title: Text('New Achievement')),
-//          BottomNavigationBarItem(
-//              icon: FaIcon(FontAwesomeIcons.solidChartBar),
-//              title: Text('Stats')),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.solidChartBar),
+              title: Text('Stats')),
           BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.solidListAlt),
               title: Text('List Achievements')),
@@ -55,8 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
               title: Text('User Information')),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromRGBO(145, 241, 230, 1.0),
-        unselectedItemColor: Color.fromRGBO(65, 117, 187, 1.0),
+        selectedItemColor: Color.fromRGBO(174, 195, 175, 1.0),
+        unselectedItemColor: Color.fromRGBO(89, 131, 146, 1.0),
         onTap: _onItemTapped,
       ),
       body: _navOptions.elementAt(_selectedIndex),

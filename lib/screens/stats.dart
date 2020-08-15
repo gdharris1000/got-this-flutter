@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:got_this_flutter/classes/tag.dart';
-import 'package:got_this_flutter/classes/category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:got_this_flutter/streams/data.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:got_this_flutter/controllers/user_data.dart';
+
+final _firestore = Firestore.instance;
 
 class StatsScreen extends StatefulWidget {
   @override
@@ -9,33 +12,35 @@ class StatsScreen extends StatefulWidget {
 }
 
 class _StatsScreenState extends State<StatsScreen> {
-  final _firestore = Firestore.instance;
+  final UserData getUserInfo = UserData();
+  String currentUser = "";
+  String docId = "";
 
-  List<Category> categories = [
-    Category(label: 'Work', status: false),
-    Category(label: 'Self', status: false),
-    Category(label: 'Play', status: false),
-    Category(label: 'Living', status: false)
-  ];
-
-  List<Tag> tags = [
-    Tag(label: 'Health, Wellbeing, Fitness', status: false),
-    Tag(label: 'Creating', status: false),
-    Tag(label: 'New Developments', status: false),
-    Tag(label: 'Giving', status: false),
-    Tag(label: 'Receiving', status: false),
-    Tag(label: 'Other', status: false)
-  ];
-
-  List categoryLabels() {
-    List catLabels = [];
-    for (var i in categories) {
-      catLabels.add(i.label);
-    }
-    return catLabels;
+  void getUserDocId() async {
+    final userData = await _firestore
+        .collection('users')
+        .where('uid', isEqualTo: currentUser)
+        .getDocuments();
+    setState(() {
+      docId = userData.documents[0].documentID;
+      print('docid: $docId');
+    });
   }
 
-  void getData() {}
+  void getCurrentUser() {
+    getUserInfo.getCurrentUser().then((FirebaseUser result) {
+      setState(() {
+        currentUser = result.uid;
+        getUserDocId();
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    getCurrentUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +49,7 @@ class _StatsScreenState extends State<StatsScreen> {
         child: Column(
           children: <Widget>[
             Text('stats'),
+            Expanded(child: AchievementDataStream(docId)),
           ],
         ),
       ),
