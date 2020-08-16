@@ -81,11 +81,13 @@ class _AchievementDataStreamState extends State<AchievementDataStream> {
 
           List<charts.Series<CategoryData, String>> series = [
             charts.Series(
-              id: 'Categories',
-              data: dataCount(achievementList),
-              domainFn: (CategoryData series, _) => series.category,
-              measureFn: (CategoryData series, _) => series.count,
-            )
+                id: 'Categories',
+                data: dataCount(achievementList),
+                domainFn: (CategoryData series, _) => series.category,
+                measureFn: (CategoryData series, _) => series.count,
+                colorFn: (CategoryData series, _) =>
+                    charts.ColorUtil.fromDartColor(
+                        Color.fromRGBO(18, 69, 89, 1.0)))
           ];
           return charts.BarChart(
             series,
