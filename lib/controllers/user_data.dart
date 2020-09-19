@@ -14,4 +14,8 @@ class UserData {
       print('no user data');
     }
   }
+
+  void logOut() {
+    _auth.signOut();
+  }
 }

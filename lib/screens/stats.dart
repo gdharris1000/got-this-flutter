@@ -44,13 +44,16 @@ class _StatsScreenState extends State<StatsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        child: Column(
-          children: <Widget>[
-            Text('stats'),
-            Expanded(child: AchievementDataStream(docId)),
-          ],
+    return Scaffold(
+      appBar: (AppBar(title: Text('Stats'))),
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Text('stats'),
+              Expanded(child: AchievementDataStream(docId)),
+            ],
+          ),
         ),
       ),
     );

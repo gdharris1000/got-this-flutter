@@ -38,26 +38,36 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(18, 69, 89, 1.0),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+      bottomNavigationBar: Container(
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.shifting,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.solidPlusSquare),
-              title: Text('New Achievement')),
-          BottomNavigationBarItem(
+              title: Text('New Achievement'),
+              backgroundColor: Color.fromRGBO(18, 69, 89, 1.0),
+            ),
+            BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.solidChartBar),
-              title: Text('Stats')),
-          BottomNavigationBarItem(
+              title: Text('Stats'),
+              backgroundColor: Color.fromRGBO(18, 69, 89, 1.0),
+            ),
+            BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.solidListAlt),
-              title: Text('List Achievements')),
-          BottomNavigationBarItem(
+              title: Text('List Achievements'),
+              backgroundColor: Color.fromRGBO(18, 69, 89, 1.0),
+            ),
+            BottomNavigationBarItem(
               icon: FaIcon(FontAwesomeIcons.solidUser),
-              title: Text('User Information')),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromRGBO(174, 195, 175, 1.0),
-        unselectedItemColor: Color.fromRGBO(89, 131, 146, 1.0),
-        onTap: _onItemTapped,
+              title: Text('User Information'),
+              backgroundColor: Color.fromRGBO(18, 69, 89, 1.0),
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Color.fromRGBO(174, 195, 175, 1.0),
+          unselectedItemColor: Color.fromRGBO(89, 131, 146, 1.0),
+          onTap: _onItemTapped,
+        ),
       ),
       body: _navOptions.elementAt(_selectedIndex),
     );

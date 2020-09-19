@@ -46,13 +46,18 @@ class _ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            child: AchievementStream(docId),
-          )
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('List of Achievements'),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: AchievementStream(docId),
+            )
+          ],
+        ),
       ),
     );
   }
